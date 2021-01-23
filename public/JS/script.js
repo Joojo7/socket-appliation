@@ -47,13 +47,26 @@ mesaageForm.addEventListener('click', e =>{
     
 })
 
+mesaageForm.addEventListener('keyup', e =>{
+
+  if (e.code === "13") {
+    e.preventDefault()
+    const message  = `${messageInput.value}`
+    if (message != "") {
+      socket.emit('send-chat-message', message)
+      appendMessageForMe(message)
+      messageInput.value = ''
+    }
+  }
+ 
+  
+})
+
 
 function appendMessage(message){
 
   let man = messageContainer.scrollHeight + 500;
   messageContainer.scroll = man
-  messageContainer.scrollTop = man
-  console.log('messageContainer.scrollTop:', messageContainer.scrollTop)
 
   console.log('man:', man)
   var wrapper= document.createElement('div');
