@@ -6,7 +6,7 @@ const userInfo = document.getElementById('user-info')
 let newPerson = ''
 
 
-const socket = io('http://localhost:3000', {
+const socket = io('https://chat-app-sockets777.herokuapp.com/', {
   withCredentials: true
 });
 
