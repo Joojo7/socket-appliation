@@ -11,7 +11,10 @@ const socket = io('http://localhost:3000', {
 });
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}: ${data.message}`)
+    if (data.message != "") {
+      appendMessage(`${data.name}: ${data.message}`)
+
+    }
 })
 
 socket.on('user-in', newname => {
@@ -19,7 +22,7 @@ socket.on('user-in', newname => {
 })
 
 
-socket.on('disconnected', name => {
+socket.on('user-disconnected', name => {
   appendMessage(`${name}: disconnected`)
 
 })
@@ -36,14 +39,23 @@ socket.emit('username', username)
 mesaageForm.addEventListener('click', e =>{
     e.preventDefault()
     const message  = `${messageInput.value}`
-    socket.emit('send-chat-message', message)
-    appendMessageForMe(message)
-    messageInput.value = ''
+    if (message != "") {
+      socket.emit('send-chat-message', message)
+      appendMessageForMe(message)
+      messageInput.value = ''
+    }
+    
 })
 
 
 function appendMessage(message){
-  messageContainer.scrollTop = messageContainer.scrollHeight;
+
+  let man = messageContainer.scrollHeight + 500;
+  messageContainer.scroll = man
+  messageContainer.scrollTop = man
+  console.log('messageContainer.scrollTop:', messageContainer.scrollTop)
+
+  console.log('man:', man)
   var wrapper= document.createElement('div');
 wrapper.innerHTML = `
 
