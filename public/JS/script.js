@@ -11,12 +11,17 @@ const socket = io('http://localhost:3000', {
 });
 
 socket.on('chat-message', data => {
-    appendMessage(data)
+    appendMessage(`${data.name}: ${data.message}`)
 })
 
 socket.on('user-in', newname => {
   newPerson = newname
-  console.log('newPerson:', newPerson)
+})
+
+
+socket.on('disconnected', name => {
+  appendMessage(`${name}: disconnected`)
+
 })
 
 
@@ -46,7 +51,7 @@ wrapper.innerHTML = `
       <div class="img_cont_msg">
         <img src="https://res.cloudinary.com/dbkakssug/image/upload/v1608501683/Image_4.png" class="rounded-circle user_img_msg">
       </div>
-      <div class="msg_cotainer">${newPerson}: ${message}<span class="msg_time">${new Date().getDate()+ '-' + new Date().getMonth()+1 + '-' + new Date().getFullYear()}</span>
+      <div class="msg_cotainer"> ${message}<span class="msg_time">${new Date().getDate()+ '-' + new Date().getMonth()+1 + '-' + new Date().getFullYear()}</span>
       </div>
     </div>
               `
