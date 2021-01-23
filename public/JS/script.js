@@ -47,7 +47,7 @@ mesaageForm.addEventListener('click', e =>{
     
 })
 
-mesaageForm.addEventListener('keydown', e =>{
+messageInput.addEventListener('keydown', e =>{
 
   if (e.key === "Enter") {
     e.preventDefault()
