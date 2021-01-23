@@ -47,9 +47,9 @@ mesaageForm.addEventListener('click', e =>{
     
 })
 
-mesaageForm.addEventListener('keyup', e =>{
+mesaageForm.addEventListener('keydown', e =>{
 
-  if (e.code === "13") {
+  if (e.key === "Enter") {
     e.preventDefault()
     const message  = `${messageInput.value}`
     if (message != "") {
