@@ -12,17 +12,18 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 		<script type="text/javascript" src="./JS/engine.js"></script>
 		<script defer src="https://chat-app-sockets777.herokuapp.com/socket.io/socket.io.js"></script>
 		<script defer src="./JS/script.js"></script>
 	</head>
-	<!--Coded With Love By Mutiullah Samim-->
 	<body>
-		<div class="container-fluid h-100">
-			<div class="row justify-content-center h-100">
+		<div class="container-fluid">
+			<div class="row h-100">
 			
-				<div class="col-md-8 col-xl-8 col-sm-12 chat">
+				<div class="col-md-12 .col-lg-4 col-xl-4 col-sm-12 chat">
 					<div class="card">
 						<div class="card-header msg_head">
 							<div class="d-flex bd-highlight">
@@ -32,12 +33,11 @@
 								</div>
 								<div class="user_info" >
 									<span id="user-info">You are online ... </span>
-									<p>0 Messages</p>
+
 								</div>
 							</div>
 						</div>
 						<div class="card-body msg_card_body" id="message-container">
-							
 						</div>
 						<div class="card-footer">
 							<div class="input-group" id="send-container">
