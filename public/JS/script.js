@@ -5,11 +5,12 @@ const messageContainer = document.getElementById('message-container')
 const userInfo = document.getElementById('user-info')
 let newPerson = ''
 
-
+// connect to the server socket
 const socket = io('https://chat-app-sockets777.herokuapp.com/', {
   withCredentials: true
 });
 
+//listen to the socket for content with the tag 'chat-message'
 socket.on('chat-message', data => {
     if (data.message != "") {
       appendMessage(`${data.name}: ${data.message}`)
@@ -17,38 +18,39 @@ socket.on('chat-message', data => {
     }
 })
 
+//listen to the socket for content with the tag 'user-in'
 socket.on('user-in', newname => {
   newPerson = newname
 })
 
 
+//listen to the socket for user disconnection
 socket.on('user-disconnected', name => {
   appendMessage(`${name}: disconnected`)
-
 })
 
 
-
+//ask the user for their name
 const username = prompt('What is your name ?😃')
 
-userInfo.innerHTML = `You are online ${username}`
+userInfo.innerHTML = username!="" ? `You are online ${username}` : "User 1"
 socket.emit('username', username)
 
 
-
+// if the user taps the send button or presses enter, the message should be sent.
 mesaageForm.addEventListener('click', e =>{
     e.preventDefault()
     const message  = `${messageInput.value}`
     if (message != "") {
+
+      // the emit method sends the message out with the tag: 'send-chat-message' 
       socket.emit('send-chat-message', message)
       appendMessageForMe(message)
       messageInput.value = ''
     }
     
 })
-
 messageInput.addEventListener('keydown', e =>{
-
   if (e.key === "Enter") {
     e.preventDefault()
     const message  = `${messageInput.value}`
@@ -63,12 +65,10 @@ messageInput.addEventListener('keydown', e =>{
 })
 
 
+// send message to reciever
 function appendMessage(message){
-
   let man = messageContainer.scrollHeight + 500;
   messageContainer.scroll = man
-
-  console.log('man:', man)
   var wrapper= document.createElement('div');
 wrapper.innerHTML = `
 
@@ -84,6 +84,8 @@ wrapper.innerHTML = `
 }
 
 
+
+//show message on sender's screen
 function appendMessageForMe(message){
   messageContainer.scrollTop = messageContainer.scrollHeight;
 
