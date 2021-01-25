@@ -213,7 +213,7 @@
 	}
 
 	@media only screen
-    and (max-device-width: 400px) 
+    and (max-device-width: 500px) 
   { 
 		.card{
 			height: 98%;
