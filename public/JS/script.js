@@ -8,7 +8,7 @@ let newPerson = ''
 
 
 // connect to the server socket
-const socket = io('http://localhost:3000/', {
+const socket = io('https://chat-app-frontend777.herokuapp.com', {
   withCredentials: true
 });
 
