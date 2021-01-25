@@ -5,8 +5,10 @@ const messageContainer = document.getElementById('message-container')
 const userInfo = document.getElementById('user-info')
 let newPerson = ''
 
+
+
 // connect to the server socket
-const socket = io('https://chat-app-sockets777.herokuapp.com/', {
+const socket = io('http://localhost:3000/', {
   withCredentials: true
 });
 
